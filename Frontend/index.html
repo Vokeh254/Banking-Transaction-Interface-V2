@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simple Banking Interface</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🏦 Simple Banking Interface</h1>
+  <p class="subtitle">Create accounts, move money, and manage loans, all in KES</p>
+</header>
+
+<main class="layout">
+
+  <!-- Live account list -->
+  <section class="card wide">
+    <h2>Accounts</h2>
+    <div id="accountsList" class="accounts-list">
+      <p class="empty">No accounts yet — create one to get started.</p>
+    </div>
+  </section>
+
+  <!-- 1. Create account -->
+  <section class="card">
+    <h2>1. Create Account</h2>
+    <form id="createForm">
+      <label>Account holder name
+        <input type="text" id="createName" placeholder="e.g. Wanjiku Otieno" required />
+      </label>
+      <label>Opening deposit (KES)
+        <input type="number" id="createDeposit" min="0" step="0.01" value="0" />
+      </label>
+      <button type="submit">Create Account</button>
+    </form>
+  </section>
+
+  <!-- 2. Deposit -->
+  <section class="card">
+    <h2>2. Deposit Funds</h2>
+    <form id="depositForm">
+      <label>Account ID
+        <input type="number" id="depositId" min="1" required />
+      </label>
+      <label>Amount (KES)
+        <input type="number" id="depositAmount" min="0.01" step="0.01" required />
+      </label>
+      <button type="submit">Deposit</button>
+    </form>
+  </section>
+
+  <!-- 3. Withdraw -->
+  <section class="card">
+    <h2>3. Withdraw Funds</h2>
+    <form id="withdrawForm">
+      <label>Account ID
+        <input type="number" id="withdrawId" min="1" required />
+      </label>
+      <label>Amount (KES)
+        <input type="number" id="withdrawAmount" min="0.01" step="0.01" required />
+      </label>
+      <button type="submit">Withdraw</button>
+    </form>
+  </section>
+
+  <!-- 4. Transfer -->
+  <section class="card">
+    <h2>4. Transfer Funds</h2>
+    <form id="transferForm">
+      <label>From account ID
+        <input type="number" id="transferFrom" min="1" required />
+      </label>
+      <label>To account ID
+        <input type="number" id="transferTo" min="1" required />
+      </label>
+      <label>Amount (KES)
+        <input type="number" id="transferAmount" min="0.01" step="0.01" required />
+      </label>
+      <button type="submit">Transfer</button>
+    </form>
+  </section>
+
+  <!-- 5. Delete dormant account -->
+  <section class="card">
+    <h2>5. Delete Dormant Account</h2>
+    <form id="deleteForm">
+      <label>Account ID
+        <input type="number" id="deleteId" min="1" required />
+      </label>
+      <button type="submit" class="danger">Delete Account</button>
+    </form>
+    <p class="hint">Only accounts inactive for 90+ days can be deleted.</p>
+  </section>
+
+  <!-- Bonus: Loan -->
+  <section class="card">
+    <h2>Disburse Loan</h2>
+    <form id="loanForm">
+      <label>Account ID
+        <input type="number" id="loanId" min="1" required />
+      </label>
+      <button type="submit">Disburse KES 10,000 Loan</button>
+    </form>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
